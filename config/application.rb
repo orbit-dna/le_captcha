@@ -22,5 +22,10 @@ module LeCaptcha
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.paths.add(File.join('app', 'api'), glob: File.join('**', '*.rb'))
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+
+    config.x.swagger_doc_path = '/doc/swagger_doc'
   end
 end
