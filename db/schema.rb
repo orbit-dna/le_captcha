@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028101818) do
+ActiveRecord::Schema.define(version: 20161028123727) do
 
   create_table "captchas", force: :cascade do |t|
-    t.string   "key",        null: false
-    t.string   "value",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "key",                       null: false
+    t.string   "value",                     null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "refresh_count", default: 0, null: false
+    t.integer  "fail_count",    default: 0, null: false
   end
 
   add_index "captchas", ["key"], name: "index_captchas_on_key"
